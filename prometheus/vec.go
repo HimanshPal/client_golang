@@ -35,6 +35,11 @@ type metricVec struct {
 	hashAddByte func(h uint64, b byte) uint64
 }
 
+// NewMetricVec returns an initialized MetricVec.
+func NewMetricVec(desc *Desc, newMetric func(lvs ...string) Metric) *MetricVec {
+	return newMetricVec(desc, newMetric)
+}
+
 // newMetricVec returns an initialized metricVec.
 func newMetricVec(desc *Desc, newMetric func(lvs ...string) Metric) *metricVec {
 	return &metricVec{
